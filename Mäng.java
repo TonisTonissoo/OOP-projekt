@@ -1,0 +1,3 @@
+interface Mäng {
+    void alustaMängu();
+}
