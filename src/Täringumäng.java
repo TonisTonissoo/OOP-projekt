@@ -1,5 +1,12 @@
 import java.util.Scanner;
 
+/*
+Antud Java-kood defineerib klassi nimega "Täringumäng", mis implementeerib liidest "Mäng".
+Programm võimaldab mängida täringumängu, kus mängija ja arvuti veeretavad täringut.
+Mäng jätkub seni, kuni üks mängijatest (kas mängija või arvuti) saavutab või ületab 100 punkti.
+Mängijale kuvatakse tema punktide arv, arvuti punktide arv ning juhend täringu veeretamiseks.
+Mäng lõpeb, kui mängija või arvuti saavutab või ületab 100 punkti, ning vastavalt sellele väljastatakse vastav teade võitja kohta.
+ */
 class Täringumäng implements Mäng {
     private int mängijapunktid;
     private int arvutajapunktid;

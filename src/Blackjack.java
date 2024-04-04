@@ -5,6 +5,26 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Random;
 
+/*
+Mängureeglid:
+    Kaartide tõmbamist alustab mängija ning kui tema on lõpetanud hakkab diiler kaarte tõmbama
+    Eesmärk on saada kokku 21 punkti
+    Kaartide väärtused:
+        Numbritega kaartide vääruseks on nende number,
+        Piltidega kaartide väärtuseks on 10 välja arvatud ässal
+        Ässa väärtus on 1 või 11
+    Ässa väärtus muutub siis kui mängija või diiler on lõhki minemas
+    Diiler ei tõmba uut kaarti kui tal on koos üle 16ne
+    Kui mängija läheb üle 21 või mängijal on kokku vähem kui diileril on ta kaotanud
+    Diiler läheb ka lõhki kui tal on üle 21
+    Kui mängijal on diilerist rohkem kokku on ta võitnud
+    Viigi korral on viik
+    Mängijale ja diilerile jagatakse mängu alguses 2 kaarti ning hiljem on võimalik soovikorral kaarte juurde saada
+Programm küsib kasutajalt kas ta soovib kaarti endale juurde(hit) või soovib jääda oma olemasolevate kaartidega(pass)
+Programm loeb failist(kaardid.txt) kaardid ning annab neile funktsiooni abil väärtuse
+Programmis olevad funktsioonid aitavad arvutada välja mängija ja diileri kaartide summa
+Lõpus väljastatakse, kes võitis ning mis oli seis
+ */
 public class Blackjack implements Mäng{
     public static List<String> loeFailist(String failiNimi) throws FileNotFoundException {
         List<String> kaardid = new ArrayList<>();
