@@ -1,49 +1,56 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class NumbriMäng implements Mäng{
-    private int randomNumber;
-    private int maxRange;
-    private int numberOfAttempts;
+/**
+ * kood defineerib klassi NumbriMäng, mis implementeerib liidest Mäng.
+ * See käivitab numbrimängu, kus arvuti genereerib juhusliku numbri vahemikus 1 kuni antud maksimaalse arvu,
+ * ning mängija peab seda arvamise teel ära arvama piiratud arvu katsetega.
+ * Mäng lõpeb, kui mängija arvab õigesti või tema katsete arv lõpeb,
+ * väljastades vastavalt vastava teate.
+ */
 
-    public NumbriMäng(int maxRange, int numberOfAttempts) {
-        this.maxRange = maxRange;
-        this.numberOfAttempts = numberOfAttempts;
-        generateRandomNumber();
+public class NumbriMäng implements Mäng{
+    private int suvalineNr;
+    private int maxArv;
+    private int katseteArv;
+
+    public NumbriMäng(int maxArv, int katseteArv) {
+        this.maxArv = maxArv;
+        this.katseteArv = katseteArv;
+        suvalineArv();
     }
 
-    private void generateRandomNumber() {
+    private void suvalineArv() {
         Random random = new Random();
-        this.randomNumber = random.nextInt(maxRange) + 1;
+        this.suvalineNr = random.nextInt(maxArv) + 1;
     }
 
     public void alustaMängu() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Tere tulemast numbrimängu!");
-        System.out.println("Ma valin juhusliku numbri vahemikus 1 kuni " + maxRange + ". Proovi ära arvata!");
+        System.out.println("Ma valin juhusliku numbri vahemikus 1 kuni " + maxArv + ". Proovi ära arvata!");
 
-        int guess;
-        boolean hasGuessed = false;
+        int arvamine;
+        boolean onArvanud = false;
 
-        for (int i = 0; i < numberOfAttempts; i++) {
-            System.out.println("Sisesta oma pakkumine (" + (numberOfAttempts - i) + " katset jäänud):");
-            guess = scanner.nextInt();
+        for (int i = 0; i < katseteArv; i++) {
+            System.out.println("Sisesta oma pakkumine (" + (katseteArv - i) + " katset jäänud):");
+            arvamine = scanner.nextInt();
 
-            if (guess == randomNumber) {
-                hasGuessed = true;
+            if (arvamine == suvalineNr) {
+                onArvanud = true;
                 break;
-            } else if (guess < randomNumber) {
+            } else if (arvamine < suvalineNr) {
                 System.out.println("Arvuti mõeldud number on suurem.");
             } else {
                 System.out.println("Arvuti mõeldud number on väiksem.");
             }
         }
 
-        if (hasGuessed) {
-            System.out.println("Õige arvamus! Arv oli: " + randomNumber);
+        if (onArvanud) {
+            System.out.println("Õige arvamus! Arv oli: " + suvalineNr);
         } else {
-            System.out.println("Kahjuks ei arvanud sa õigesti. Arv oli: " + randomNumber);
+            System.out.println("Kahjuks ei arvanud sa õigesti. Arv oli: " + suvalineNr);
         }
-
     }
 }
