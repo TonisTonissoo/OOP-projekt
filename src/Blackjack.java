@@ -25,7 +25,7 @@ Programm loeb failist(kaardid.txt) kaardid ning annab neile funktsiooni abil vä
 Programmis olevad funktsioonid aitavad arvutada välja mängija ja diileri kaartide summa
 Lõpus väljastatakse, kes võitis ning mis oli seis
  */
-public class Blackjack implements Mäng{
+public class Blackjack implements Mäng {
     public static List<String> loeFailist(String failiNimi) throws FileNotFoundException {
         List<String> kaardid = new ArrayList<>();
         File file = new File(failiNimi);
@@ -67,14 +67,14 @@ public class Blackjack implements Mäng{
 
     // Ässa tuvastamine
     public static int bust(List<String> a) {
-        int skaardid = a.size()-1;
-        while (skaardid >= 0) {
-            skaardid--;
+        int skaardid = 0;
+        while (skaardid < a.size()) {
             String b = a.get(skaardid);
             String[] c = b.split(" ");
             if (c[1].equals("äss")) {
                 return 10;
             }
+            skaardid++;
         }
         return 0;
     }
